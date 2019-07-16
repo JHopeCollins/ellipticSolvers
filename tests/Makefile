@@ -15,12 +15,14 @@ testPROGRMDIR = progrm/#		test executables
 # definition source files for the tests for each section of the program
 testCSOURCE = test-linspace.cpp \
 					test-Grid.cpp \
+					test-SparseMatrixSolver.cpp \
 					test-LaplaceProblem.cpp \
 					test-PoissonProblem.cpp
 
 # main() function files for running the tests for each section of the program
 testCSCRIPT = test-linspace.cpp \
 					test-Grid.cpp \
+					test-SparseMatrixSolver.cpp \
 					test-LaplaceProblem.cpp \
 					test-PoissonProblem.cpp
 
@@ -30,6 +32,7 @@ testallCSCRIPT = test-full.cpp
 # definition source files for program to be tested
 progCSOURCE = linspace.cpp \
 					grid.cpp \
+					sparseMatrixSolver.cpp \
 					laplaceProblem.cpp \
 					poissonProblem.cpp
 
