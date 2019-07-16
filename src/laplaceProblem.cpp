@@ -151,7 +151,7 @@
       if( !( grid.isDiscretised() ) ){ grid.discretise(); }
       int n=grid.nx()-2;
 
-      if( !diagonalCoefficientVector ){ diagonalCoefficientVector = new int[n]; }
+      if( !diagonalCoefficientVector ){ diagonalCoefficientVector = new float[n]; }
 
       for( int i=0; i<n; i++ ){ diagonalCoefficientVector[i]=-2.; }
   }
@@ -161,14 +161,14 @@
       if( !( grid.isDiscretised() ) ){ grid.discretise(); }
       int n=grid.nx()-2;
 
-      if( !offDiagonalCoefficientVector ){ offDiagonalCoefficientVector = new int*[n]; }
+      if( !offDiagonalCoefficientVector ){ offDiagonalCoefficientVector = new float*[n]; }
 
       for( int i=0; i<n; i++ )
      {
-         offDiagonalCoefficientVector[i] = new int[ maximumSparsity ];
+         offDiagonalCoefficientVector[i] = new float[ maximumSparsity ];
          for( int j=0; j<maximumSparsity; j++ )
         {
-            offDiagonalCoefficientVector[i][j]=1;
+            offDiagonalCoefficientVector[i][j]=1.;
         }
      }
       offDiagonalCoefficientVector[  0][1]=0;

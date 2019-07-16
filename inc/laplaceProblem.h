@@ -1,4 +1,3 @@
-
 # ifndef LAPLACE_H
 # define LAPLACE_H
 
@@ -11,12 +10,13 @@
       float  leftBoundaryValue;
       float rightBoundaryValue;
 
-      int   maximumSparsity;
-      int  *sparsityVector;
-      int **connectionVector;
-      int **offDiagonalCoefficientVector;
-      int  *diagonalCoefficientVector;
-      
+      int     maximumSparsity;
+      int    *sparsityVector;
+      int   **connectionVector;
+
+      float **offDiagonalCoefficientVector;
+      float  *diagonalCoefficientVector;
+
       float *rhsVector;
       float *currentSolutionVector;
       float *previousSolutionVector;
