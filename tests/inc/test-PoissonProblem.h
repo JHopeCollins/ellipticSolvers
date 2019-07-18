@@ -20,7 +20,7 @@
          CPPUNIT_TEST( test_set_one_PointSource );
          CPPUNIT_TEST( test_set_multiple_PointSources );
          CPPUNIT_TEST( test_constructRHS_no_sources );
-         CPPUNIT_TEST( test_constructRHS_one_source );
+         CPPUNIT_TEST( test_constructRHS_one_source_inside_domain );
          CPPUNIT_TEST( test_constructRHS_many_sources );
 
       CPPUNIT_TEST_SUITE_END();
@@ -37,7 +37,7 @@
       void test_set_one_PointSource();
       void test_set_multiple_PointSources();
       void test_constructRHS_no_sources();
-      void test_constructRHS_one_source();
+      void test_constructRHS_one_source_inside_domain();
       void test_constructRHS_many_sources();
   };
 

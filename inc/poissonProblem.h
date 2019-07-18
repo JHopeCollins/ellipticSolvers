@@ -22,6 +22,8 @@
 
       void  setPointSource( int location, float strength );
       float pointSource( int location );
+
+      void constructRHS();
   };
 
 # endif

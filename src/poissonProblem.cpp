@@ -56,3 +56,19 @@
      }
       return strength;
   }
+
+   void PoissonProblem::constructRHS()
+  {
+      LaplaceProblem::constructRHS();
+
+      int   location;
+      float strength;
+      float dx=grid.dx();
+
+      for( int i=0; i<numberPointSources; i++ )
+     {
+         location=pointSourceLocations[i]-1;
+         strength=pointSourceStrengths[i];         
+         rhsVector[location]+= dx*dx*strength;
+     }
+  }

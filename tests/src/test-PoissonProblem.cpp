@@ -13,6 +13,7 @@
       poisson.grid.setNx( nx );
       poisson.grid.setBounds( leftBoundary, rightBoundary );
       poisson.grid.discretise();
+      poisson.scrapeGrid();
 
       poisson.setDirichletLeft(   leftValue );
       poisson.setDirichletRight( rightValue );
@@ -73,9 +74,11 @@
       float lb,rb;
       poisson.grid.bounds( lb,rb );
 
+   // laplace problem for comparison
       laplace.grid.setNx( poisson.grid.nx() );
       laplace.grid.setBounds( lb,rb );
       laplace.grid.discretise();
+      laplace.scrapeGrid();
 
       laplace.setDirichletLeft(  poisson.dirichletLeft()  );
       laplace.setDirichletRight( poisson.dirichletRight() );
@@ -91,11 +94,81 @@
      }
   }
 
-   void Test_PoissonProblem::test_constructRHS_one_source()
+   void Test_PoissonProblem::test_constructRHS_one_source_inside_domain()
   {
+      LaplaceProblem laplace;
+      float dx=poisson.grid.dx();
+      float lb,rb;
+      poisson.grid.bounds( lb,rb );
+
+   // laplace problem for comparison
+      laplace.grid.setNx( poisson.grid.nx() );
+      laplace.grid.setBounds( lb,rb );
+      laplace.grid.discretise();
+      laplace.scrapeGrid();
+
+      laplace.setDirichletLeft(  poisson.dirichletLeft()  );
+      laplace.setDirichletRight( poisson.dirichletRight() );
+      laplace.constructRHS();
+
+      int   nsources=1;
+      int   sourceLocation0=3;
+      float sourceStrength0=-30.1;
+
+      poisson.setNPointSources( nsources );
+      poisson.setPointSource( sourceLocation0, sourceStrength0 );
+
+      poisson.constructRHS();
+
+      for( int i=1; i<poisson.grid.nx()-1; i++ )
+     {
+         float expected=laplace.rhs(i);
+         float actual  =poisson.rhs(i);
+
+         if( i==sourceLocation0 ){ expected+=sourceStrength0*dx*dx; }
+
+         CPPUNIT_ASSERT_DOUBLES_EQUAL( expected, actual, floatError );
+     }
   }
 
    void Test_PoissonProblem::test_constructRHS_many_sources()
   {
+      LaplaceProblem laplace;
+      float dx=poisson.grid.dx();
+      float lb,rb;
+      poisson.grid.bounds( lb,rb );
+
+   // laplace problem for comparison
+      laplace.grid.setNx( poisson.grid.nx() );
+      laplace.grid.setBounds( lb,rb );
+      laplace.grid.discretise();
+      laplace.scrapeGrid();
+
+      laplace.setDirichletLeft(  poisson.dirichletLeft()  );
+      laplace.setDirichletRight( poisson.dirichletRight() );
+      laplace.constructRHS();
+
+      int   nsources=2;
+      int   sourceLocation0=3;
+      float sourceStrength0=-30.5;
+      int   sourceLocation1=4;
+      float sourceStrength1=10.5;
+
+      poisson.setNPointSources( nsources );
+      poisson.setPointSource( sourceLocation0, sourceStrength0 );
+      poisson.setPointSource( sourceLocation1, sourceStrength1 );
+
+      poisson.constructRHS();
+
+      for( int i=1; i<poisson.grid.nx()-1; i++ )
+     {
+         float expected=laplace.rhs(i);
+         float actual  =poisson.rhs(i);
+
+         if( i==sourceLocation0 ){ expected+=sourceStrength0*dx*dx; }
+         if( i==sourceLocation1 ){ expected+=sourceStrength1*dx*dx; }
+
+         CPPUNIT_ASSERT_DOUBLES_EQUAL( expected, actual, floatError );
+     }
   }
 
