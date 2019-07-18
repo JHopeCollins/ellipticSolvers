@@ -23,7 +23,7 @@
 
       CPPUNIT_TEST_SUITE_END();
 
-      float floatError=10e-5;
+      float floatError =10e-5;
       float jacobiError=10e-4;
 
    public:

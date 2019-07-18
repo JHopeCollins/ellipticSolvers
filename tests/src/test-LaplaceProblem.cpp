@@ -38,6 +38,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(   leftDirichlet );
       problem.setDirichletRight( rightDirichlet );
@@ -61,6 +62,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(   leftDirichlet );
       problem.setDirichletRight( rightDirichlet );
@@ -81,6 +83,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       CPPUNIT_ASSERT_EQUAL( 2, problem.maxSparsity() );
 
@@ -106,6 +109,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.constructConnections();
 
@@ -132,6 +136,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.constructDiagonalCoefficients();
 
@@ -151,6 +156,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.constructOffDiagonalCoefficients();
 
@@ -179,6 +185,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(  solutionValue );
       problem.setDirichletRight( solutionValue );
@@ -212,6 +219,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(   leftValue );
       problem.setDirichletRight( rightValue );
@@ -247,6 +255,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(  solutionValue );
       problem.setDirichletRight( solutionValue );
@@ -293,6 +302,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(  solutionValue );
       problem.setDirichletRight( solutionValue );
@@ -330,6 +340,7 @@
       problem.grid.setNx( nx );
       problem.grid.setBounds( leftBoundary, rightBoundary );
       problem.grid.discretise();
+      problem.scrapeGrid();
 
       problem.setDirichletLeft(   leftValue );
       problem.setDirichletRight( rightValue );

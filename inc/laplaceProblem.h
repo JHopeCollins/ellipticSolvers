@@ -1,30 +1,14 @@
 # ifndef LAPLACE_H
-# define LAPLACE_H
-
+# define LAPLACE_H 
+# include "sparseMatrixSolver.h"
 # include "grid.h"
 
-   class LaplaceProblem
+   class LaplaceProblem : protected SparseMatrixSolver
   {
    private:
 
       float  leftBoundaryValue;
       float rightBoundaryValue;
-
-      int     maximumSparsity;
-      int    *sparsityVector;
-      int   **connectionVector;
-
-      float **offDiagonalCoefficientVector;
-      float  *diagonalCoefficientVector;
-
-      float *rhsVector;
-      float *currentSolutionVector;
-      float *previousSolutionVector;
-
-      float jacobiTol;
-
-      void mallocSolutionVectors();
-      void constructFullMatrix( float *a );
 
    public:
 
@@ -32,6 +16,8 @@
      ~LaplaceProblem();
 
       Grid  grid;
+
+      void scrapeGrid();
 
       void setDirichletLeft(  float ld );
       void setDirichletRight( float rd );
@@ -52,16 +38,15 @@
       void  constructOffDiagonalCoefficients();
       float offDiagonalCoefficient( int i, int c );
 
-      void  constructRHS();
+      virtual void constructRHS();
       float rhs( int i );
 
       void  setJacobiTolerance( float tol );
       float jacobiTolerance();
 
-      void  jacobiIteration( float &residial );
-
-      int   directSolve();
-      int   jacobiSolve( int nIterations );
+      using SparseMatrixSolver::directSolve;
+      using SparseMatrixSolver::jacobiIteration;
+      using SparseMatrixSolver::jacobiSolve;
 
       float solution( int i );
 

@@ -236,7 +236,7 @@
       x[1] =  5035./1764.;
       x[2] = -1795./294.;
       x[3] =  7505./882.;
-      
+
       int info, nIterations=0;
 
       solver.jacobiTol=jacobiError;
